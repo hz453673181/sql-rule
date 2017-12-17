@@ -25,5 +25,3 @@ select count(*) from Student where age>25 and sex=1,亦可。
 
 比较两种方式，第二种方式其实就是一种DSL的实现，业务人员要配置规则，只需要编写SQL就可以。
 
-
-
