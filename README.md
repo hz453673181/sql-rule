@@ -9,19 +9,18 @@ DSL面向的使用对象是领域专家，而非程序员，它隐藏了很对�
 在hadoop集群上执行，而在hive出现以前，这种提取任务需要编写大量的MR程序，在这个例子中，SQL实际上就是作为了一种DSL语言，业务专家，数据专家，只需要会写
 SQL就可以了，完全不必了解MR到底是个什么东西。  
   
-言归正传，sql-rule是借鉴了sql on hadoop的思想，将整个规则匹配的执行过程，看做是一次SQL查询
-比如，有个Student的JavaBean，有三个属性，id,age,sex.当业务人员要制定一个规则，年龄大于25，性别为男，同事满足这两个条件才能进行后续的业务，
-通过硬编码的方式：
-if(student.getAge()>25 && student.getSex()==1){
-  // TODO
-}
-通过SQL的方式
-我们可以把Student 看成一张表，虚拟的数据库表，这张表有三列id,age,sex,对于这张虚拟表，它只有一行数据，就是通过JavaBean setXXX的几个属性
-实现上面的规则可以看做一次查询
-select * from Student where age>25 and sex=1
-返回行数为1，表示满足规则，为0，则不满足规则
-或者
+言归正传，sql-rule是借鉴了sql on hadoop的思想，将整个规则匹配的执行过程，看做是一次SQL查询  
+比如，有个Student的JavaBean，有三个属性，id,age,sex.当业务人员要制定一个规则，年龄大于25，性别为男，同事满足这两个条件才能进行后续的业务，  
+通过硬编码的方式：  
+if(student.getAge()>25 && student.getSex()==1){  
+// TODO  
+}  
+通过SQL的方式  
+我们可以把Student 看成一张表，虚拟的数据库表，这张表有三列id,age,sex,对于这张虚拟表，它只有一行数据，就是通过JavaBean setXXX的几个属性实现上面的规则可以看做一次查询  
+select * from Student where age>25 and sex=1  
+返回行数为1，表示满足规则，为0，则不满足规则  
+或者  
 select count(*) from Student where age>25 and sex=1,亦可。
-
+  
 比较两种方式，第二种方式其实就是一种DSL的实现，业务人员要配置规则，只需要编写SQL就可以。
 
