@@ -1,0 +1,11 @@
+{
+  "version":"1.0",
+  "defaultSchema":"rule_bean",
+  "schemas": [
+    {
+      "type":"custom",
+      "name":"rule_bean",
+      "factory":"com.apache.calcite.sql.rule.table.BeanSchemaFactory"
+    }
+  ]
+}
